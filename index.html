@@ -1,1 +1,126 @@
-<h1 style="margin: 20vh 30px; text-align: center; font-family: sans-serif;">Guía Patrimonial Santa Cruz de Tenerife</h1>
+<script>
+function findGetParameter(parameterName) {
+    var result = null,
+        tmp = [];
+    location.search
+        .substr(1)
+        .split("&")
+        .forEach(function (item) {
+          tmp = item.split("=");
+          if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+        });
+    return result;
+}
+
+var map = [
+"",
+"1.1_Iglesia de Nuestra Señora de La Concepcion.mp3",
+"1.2_Casco Antiguo.mp3",
+"1.3_Ermita de San Telmo.mp3",
+"1.4_Castillo Negro.mp3",
+"1.5_Ermita de Nuestra Señora de Regla.mp3",
+"1.6_Ermita de San Sebastian.mp3",
+"1.7_Castillo de San Cristobal.mp3",
+"1.8_Iglesia de San Francisco.mp3",
+"1.9_Castillo de Paso Alto.mp3",
+"2.1_Plaza de La Candelaria.mp3",
+"2.2_Palacio de Carta.mp3",
+"2.3_Calle del Castillo.mp3",
+"2.4_Alameda del Muelle.mp3",
+"2.5_Antiguo Muelle desembarcadero.mp3",
+"2.6_Iglesia de Nuestra Señora del Pilar.mp3",
+"2.7_Hospicio y Cuartel de San Carlos.mp3",
+"3.1_Plaza del Principe.mp3",
+"3.2_Plaza Weyler.mp3",
+"3.3_Palacio de Capitania General de Canarias.mp3",
+"3.4_Edificio sede del Parlamento de Canarias.mp3",
+"3.5_Teatro Guimera.mp3",
+"3.6_Recova Vieja.mp3",
+"3.7_Antiguo Hospital Civil_MNA.mp3",
+"3.8_Cementerio de San Rafael y San Roque.mp3",
+"3.9_Cuartel de Almeyda.mp3",
+"4.10_Barrio de El Toscal.mp3",
+"4.1_Plaza de España.mp3",
+"4.2_Museo Municipal de Bellas Artes.mp3",
+"4.3_Templo Masonico_Logia de Añaza.mp3",
+"4.4_Parque Garcia Sanabria.mp3",
+"4.5_Ayuntamiento de Santa Cruz de Tenerife.mp3",
+"4.6_Plaza de Los Patos.mp3",
+"4.7_Ramblas.mp3",
+"4.8_Hotel Mencey.mp3",
+"4.9_Parque Cultural Viera y Clavijo.mp3",
+"Titulo.mp3"
+];
+
+if (findGetParameter('l') != null && findGetParameter('i') != null) {
+	window.location.href="https://guia-patrimonial-sc.netlify.app/" + findGetParameter('l') + "/" + map[+findGetParameter('i')];
+}
+
+</script>
+<style>
+	html {
+		overflow-y: scroll;
+	}
+	* {
+		font-family: sans-serif;
+	}
+	h1 {
+		margin: 10vh 30px 40px 30px;
+		text-align: center;
+	}
+	.center {
+		max-width: 400px;
+		margin: 0 auto;
+		padding-bottom: 5vh;
+	}
+	details {
+		margin-bottom: 20px;
+	}
+	summary {
+		font-size: 2rem;
+		cursor: pointer;
+		text-align: center;
+	}
+	li {
+		margin: 0 0 3px 0;
+	}
+</style>
+<h1>Guía Patrimonial Santa Cruz de Tenerife</h1>
+<div class="center">
+	<details>
+	  <summary>Español&nbsp;&nbsp;</summary>
+	  <ul id="es">
+	  </ul>
+	</details>
+	<details>
+	  <summary>English&nbsp;&nbsp;&nbsp;</summary>
+	  <ul id="en">
+	  </ul>
+	</details>
+	<details>
+	  <summary>Deutsche</summary>
+	  <ul id="de">
+	  </ul>
+	</details>
+	<details>
+	  <summary>Français&nbsp;&nbsp;</summary>
+	  <ul id="fr">
+	  </ul>
+	</details>
+</div>
+<script>
+	let es = "";
+	let en = "";
+	let de = "";
+	let fr = "";
+	for (let i = 1; i < map.length - 1; i++) {
+		es += "<li><a href='https://guia-patrimonial-sc.netlify.app/es/" + map[i] + "'>" + map[i].slice(0, -4) + "</a></li>";
+		en += "<li><a href='https://guia-patrimonial-sc.netlify.app/en/" + map[i] + "'>" + map[i].slice(0, -4) + "</a></li>";
+		de += "<li><a href='https://guia-patrimonial-sc.netlify.app/de/" + map[i] + "'>" + map[i].slice(0, -4) + "</a></li>";
+		fr += "<li><a href='https://guia-patrimonial-sc.netlify.app/fr/" + map[i] + "'>" + map[i].slice(0, -4) + "</a></li>";
+	}
+	document.getElementById('es').innerHTML = es;
+	document.getElementById('en').innerHTML = en;
+	document.getElementById('de').innerHTML = de;
+	document.getElementById('fr').innerHTML = fr;
+</script>
